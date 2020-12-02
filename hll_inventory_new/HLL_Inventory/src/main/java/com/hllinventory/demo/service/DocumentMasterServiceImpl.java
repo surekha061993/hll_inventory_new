@@ -1,6 +1,7 @@
 package com.hllinventory.demo.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,16 +21,16 @@ public class DocumentMasterServiceImpl implements DocumentMasterService {
 	}
 
 	@Override
-	public DocumentMaster getDocument(int docid) {
-		DocumentMaster document=documentRepository.findById(docid).get();
-		return document;
+	public Optional<DocumentMaster> getDocument(int docid) {
+		return documentRepository.findById(docid);
+		//return document;
 	}
 
 	@Override
-	public DocumentMaster updateDocument(DocumentMaster document) {
+	public List<DocumentMaster> updateDocument(DocumentMaster document) {
 		documentRepository.save(document);
-		DocumentMaster documentt=documentRepository.findById(document.getDocid()).get();
-		return document;
+		List<DocumentMaster> documentt=documentRepository.findAll();
+		return documentt;
 	}
 
 
@@ -44,5 +45,10 @@ public class DocumentMasterServiceImpl implements DocumentMasterService {
 		documentRepository.deleteById(docid);
 		return docid;
 	}
+
+//	@Override
+//	public List<DocumentMaster> searchDocumentByName(String docname) {
+//		return documentRepository.findByName(docname);
+//	}
 
 }

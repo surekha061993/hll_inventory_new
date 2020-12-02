@@ -40,16 +40,16 @@ public class DocumentMasterController {
 		}
 		
 		@GetMapping(value = "/getDocument/{docid}")
-		public DocumentMaster getDocument(@PathVariable("docid") int docid) {
-			DocumentMaster document=documentMasterService.getDocument(docid);
-		    return document;
+		public DocumentMaster getDocument(@PathVariable int docid) {
+			return documentMasterService.getDocument(docid).get();
+		     
 		}
 		
-		@PutMapping(value = "/updateDocument")
-		public DocumentMaster updateDocument(@RequestBody DocumentMaster document)
+		@PutMapping(value = "/update")
+		public List<DocumentMaster> updateDocument(@RequestBody DocumentMaster document)
 		{
-			DocumentMaster updateDocument= documentMasterService.updateDocument(document);
-		  return updateDocument;
+			return documentMasterService.updateDocument(document);
+		  
 		}
 		
 		@DeleteMapping(value = "/deleteDocument/{docid}")
@@ -59,5 +59,11 @@ public class DocumentMasterController {
 		   List<DocumentMaster> document=documentMasterService.getAllDocument();
 		   return document;
 		}
+//		@GetMapping(value = "/searchDocument/{docname}")
+//		public List<DocumentMaster> searchDocument(@PathVariable String docname)
+//		{
+//			return documentMasterService.searchDocumentByName(docname);
+//		}
+//		
 	    
 }

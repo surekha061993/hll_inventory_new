@@ -13,43 +13,45 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Entity
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name="inv_docment_master")
-public class DocumentMaster {
+@Table(name="pharma_form_master")
+public class FormMaster {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int docid;
-	private String docname;
+	@Column(name="form_id")
+	private Integer formId;
 	
-	@Column(name="doc_delete_flag")
-	private  int docDeleteFlag;
+	@Column(name="form_name")
+	private String formName;
 	
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="doc_update_date")
-	private Date docUpdateDate;
-    
-	@Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "doc_add_date")
-	private Date documentAddDate;
+	@Column(name="form_delete_flag")
+	private int formDeleteFlag;
+	
+//	@Temporal(TemporalType.DATE)
+//	@Column(name="form_update_date")
+//	private Date formUpdateDate;
+//
+//	@Temporal(TemporalType.DATE)
+//	@Column(name = "form_add_date")
+//	private Date formAddDate;
+//	
+//	@PrePersist
+//    protected void onCreate() {
+//		formUpdateDate = formAddDate = new Date();
+//    }
+//	@PreUpdate
+//    protected void onUpdate() {
+//		formUpdateDate = new Date();
+//    }
 
-	@PrePersist
-    protected void onCreate() {
-		docUpdateDate = documentAddDate = new Date();
-    }
-	@PreUpdate
-    protected void onUpdate() {
-		docUpdateDate = new Date();
-    }
 }

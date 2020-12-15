@@ -13,8 +13,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,31 +23,39 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="inv_docment_master")
-public class DocumentMaster {
+@Table(name="inv_financial_year")
+public class InventoryFinancialYear {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int docid;
-	private String docname;
+	@Column(name="fin_year_id")
+    private int finYearId;
 	
-	@Column(name="doc_delete_flag")
-	private  int docDeleteFlag;
+	@Temporal(TemporalType.DATE)
+	@Column(name="fin_year_start_date")
+	private Date finYearStartDate;
 	
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="doc_update_date")
-	private Date docUpdateDate;
-    
-	@Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "doc_add_date")
-	private Date documentAddDate;
-
+	@Temporal(TemporalType.DATE)
+	@Column(name="fin_year_end_date")
+	private Date finYearEndDate;
+	
+	@Column(name="fin_year")
+	private String finYear;
+	
+	@Column(name="fin_delete_flag")
+	private int finDeleteFlag;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name="fin_update_date")
+	private Date finUpdateDate;
+	
 	@PrePersist
     protected void onCreate() {
-		docUpdateDate = documentAddDate = new Date();
+		finUpdateDate = finYearStartDate = new Date();
     }
 	@PreUpdate
     protected void onUpdate() {
-		docUpdateDate = new Date();
+		finUpdateDate = new Date();
     }
+
 }

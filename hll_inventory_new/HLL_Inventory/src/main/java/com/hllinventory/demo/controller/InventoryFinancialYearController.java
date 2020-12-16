@@ -50,12 +50,13 @@ public class InventoryFinancialYearController {
 	public void updateFinancialYear(@RequestBody InventoryFinancialYear financialYear) {
 		financialYearService.updateFinancialYear(financialYear);
 	}
-
+	
 	@DeleteMapping(value = "/deleteFinYear/{finYearId}")
-	public List<InventoryFinancialYear> deleteFinancialYear(@PathVariable("finYearId") InventoryFinancialYear finYear) {
-		financialYearService.deleteFinancialYear(finYear);
-		List<InventoryFinancialYear> financialYear = financialYearService.getAllFinancialYear();
-		return financialYear;
+	public boolean deleteFinancialYear(@PathVariable("finYearId") int finYearId) {
+		InventoryFinancialYear financialYear = financialYearService.getFinancialYear(finYearId);
+		financialYearService.deleteFinancialYear(financialYear);
+		return true;
 	}
-
+	
+	
 }

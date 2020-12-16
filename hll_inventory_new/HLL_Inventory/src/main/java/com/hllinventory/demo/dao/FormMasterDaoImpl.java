@@ -7,10 +7,12 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import com.hllinventory.demo.model.DocumentMaster;
 import com.hllinventory.demo.model.FormMaster;
 
+/**
+ * @author Surekha Londhe
+ * @Date 16-12-2020
+ */
 @Repository
 public class FormMasterDaoImpl implements FormMasterDao {
 
@@ -24,12 +26,12 @@ public class FormMasterDaoImpl implements FormMasterDao {
 		session.close();
 	}
 	@Override
-	public int deleteForms(int formId) {
+	public FormMaster deleteForms(FormMaster form) {
 		Session session = this.sessionFactory.openSession();
-		session.delete(formId);
+		session.delete(form);
 		session.beginTransaction().commit();
 		session.close();
-		return formId;
+		return form;
 	}
 	@Override
 	public List<FormMaster> getAllForm() {
@@ -38,6 +40,23 @@ public class FormMasterDaoImpl implements FormMasterDao {
 		 List<FormMaster> form = (List<FormMaster>)query.list();
 	     session.beginTransaction().commit();
 	     session.close();
+		return form;
+	}
+
+	@Override
+	public boolean update(FormMaster form) {
+		Session session = this.sessionFactory.openSession();
+		session.update(form);
+		session.beginTransaction().commit();
+		session.close();
+		return true;
+	}
+	@Override
+	public FormMaster getFormMaster(int formId) {
+		Session session=this.sessionFactory.openSession();
+		FormMaster form=session.find(FormMaster.class, formId);
+		session.beginTransaction().commit();
+		session.close();
 		return form;
 	}
 

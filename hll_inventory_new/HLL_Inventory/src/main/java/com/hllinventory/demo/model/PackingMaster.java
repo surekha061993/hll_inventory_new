@@ -17,44 +17,45 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
-@Entity
+/**
+ * @author Surekha Londhe
+ * @Date 16-12-2020
+ */
+
 @Setter
 @Getter
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="pharma_form_master")
+@Entity
+@Table(name="pharma_packing_master")
+public class PackingMaster {
 
-public class FormMaster {
-	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="form_id")
-	private int formId;
+	@Column(name="pack_id")
+	private int packId;
 	
-	@Column(name="form_name")
-	private String formName;
-	
-	@Column(name="form_delete_flag")
-	private int formDeleteFlag;
+	@Column(name="pack_type")
+	private String packType;
+		
+	@Column(name="pack_delete_flag")
+	private int packDeleteFlag;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="form_update_date")
-	private Date formUpdateDate;
+	@Column(name="pack_update_date")
+	private Date packUpdateDate;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "pak_add_date")
+	private Date pakAddDate;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "form_add_date")
-	private Date formAddDate;
-	
 	@PrePersist
     protected void onCreate() {
-		formUpdateDate = formAddDate = new Date();
+		packUpdateDate = pakAddDate = new Date();
     }
 	@PreUpdate
     protected void onUpdate() {
-		formUpdateDate = new Date();
+		packUpdateDate = new Date();
     }
-
 }

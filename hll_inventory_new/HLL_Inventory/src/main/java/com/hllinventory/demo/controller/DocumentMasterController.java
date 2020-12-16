@@ -57,6 +57,7 @@ public class DocumentMasterController {
 			 documentMasterService.updateDocument(document);
 		}
 		
+		
 		@DeleteMapping(value = "/deleteDocument/{docid}")
 		public List<DocumentMaster> deleteDocument(@PathVariable("docid") DocumentMaster documentt)
 		{

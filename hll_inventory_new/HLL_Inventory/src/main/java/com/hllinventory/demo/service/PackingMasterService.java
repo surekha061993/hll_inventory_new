@@ -11,8 +11,12 @@ import com.hllinventory.demo.model.PackingMaster;
 public interface PackingMasterService {
 
 	public void savePacking(PackingMaster packing);
+
 	public PackingMaster getPacking(int packId);
+
 	public List<PackingMaster> getAllPacking();
+
 	public void updatePacking(PackingMaster packing);
+
 	public PackingMaster deletePacking(PackingMaster packing);
 }

@@ -29,10 +29,12 @@ public class PackingMasterController {
 	private PackingMasterService packingService;
 	
 	@PostMapping("/addPacking")
-	public String addPacking(@RequestBody PackingMaster packing)
+	public List<PackingMaster> addPacking(@RequestBody PackingMaster packing)
 	{
 		packingService.savePacking(packing);
-		return "Packing Added Successfully";
+		List<PackingMaster> packingg=(List<PackingMaster>) packingService.getAllPacking();
+		return packingg;
+		//return "Packing Added Successfully";
 	}
 
 	@GetMapping("/getPacking/{packId}")
@@ -49,9 +51,11 @@ public class PackingMasterController {
 	}
 	
 	@PutMapping("/update")
-	public void updatePacking(@RequestBody PackingMaster packing)
+	public List<PackingMaster> updatePacking(@RequestBody PackingMaster packing)
 	{
 		packingService.updatePacking(packing);
+		List<PackingMaster> packingg=packingService.getAllPacking();
+		return packingg;
 	}
 	
 	@DeleteMapping("/delete/{packId}")
@@ -62,5 +66,6 @@ public class PackingMasterController {
 			return true;
 		} 
 		return false;
+		
 	}
 }

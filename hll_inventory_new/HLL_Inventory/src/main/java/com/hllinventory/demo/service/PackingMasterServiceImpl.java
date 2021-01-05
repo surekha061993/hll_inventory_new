@@ -46,5 +46,4 @@ public class PackingMasterServiceImpl implements PackingMasterService {
 		packingDao.updatePacking(packing);
 		return packing;
 	}
-
 }

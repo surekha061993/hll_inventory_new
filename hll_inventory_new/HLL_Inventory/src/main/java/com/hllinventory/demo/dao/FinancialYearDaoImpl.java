@@ -47,11 +47,10 @@ public class FinancialYearDaoImpl implements FinancialYearDao{
 	@Override
 	public List<FinancialYearMaster> getAllFinancialYear() {
 		Session session = this.sessionFactory.openSession();
-		Query query = session.createQuery("from FinancialYearMaster fin where fin.yearDeleteFlag = '0'");
+		Query query = session.createQuery("from FinancialYearMaster fin where fin.yearDeleteFlag = '0' and year!=null");
 		 List<FinancialYearMaster> financialYear = (List<FinancialYearMaster>)query.list();
 	     session.beginTransaction().commit();
 	     session.close();
 		return financialYear;
 	}
-
 }

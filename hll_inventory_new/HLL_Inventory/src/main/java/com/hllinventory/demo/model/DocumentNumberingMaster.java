@@ -1,16 +1,28 @@
 package com.hllinventory.demo.model;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.sun.istack.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,37 +35,49 @@ import lombok.Setter;
 @NoArgsConstructor
 @Table(name="pharma_document_numbering_master")
 @Entity
-public class DocumentNumberingMaster {
+public class DocumentNumberingMaster implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "doc_num_id")
+	@Column(name = "document_numbering_id")
 	private int docNumId;
 
-	@Column(name = "doc_series")
+	@Column(name = "document_series")
 	private String docSeries;
 
-	@Column(name = "doc_no")
+	@Column(name = "document_number")
 	private Integer docNo;
 
-	@OneToOne
-	@JoinColumn(name = "doc_id")
-	private DocumentMaster documentMaster;
+	@OneToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name = "docid")
+	private DocumentMaster document;
 
-	@Column(name = "doc_prefix")
+	@Column(name = "document_prefix")
 	private String docPrefix;
 
-	@Column(name = "doc_suffix")
+	@Column(name = "document_suffix")
 	private String docSuffix;
 
-	@ManyToOne
-	@JoinColumn(name = "doc_fin_year_id")
-	private FinancialYearMaster yearMaster;
+//	@OneToOne(cascade=CascadeType.ALL)
+//	@JoinColumn(name = "year_id")
+	@OneToMany
+	private List<FinancialYearMaster> year_id;
 
 	@Column(name = "doc_delete_flag")
-	private Integer docDeleteFlag;
+	private int docDeleteFlag;
 
-	@Column(name = "doc_update_date")
+	@Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "doc_update_date")
 	private Date docUpdateDate;
-
+	
+	@PrePersist
+    protected void onUpdate() {
+		docUpdateDate = new Date();
+    }
+	
 	}

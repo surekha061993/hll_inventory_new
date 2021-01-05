@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hllinventory.demo.model.DocumentMaster;
+import com.hllinventory.demo.model.TaxMaster;
 import com.hllinventory.demo.service.DocumentMasterService;
 
 /**
@@ -32,10 +33,11 @@ public class DocumentMasterController {
 	private DocumentMasterService documentMasterService;
 	
 	    @PostMapping("/addDocument")
-         public String addDocument(@RequestBody DocumentMaster document)
+         public List<DocumentMaster> addDocument(@RequestBody DocumentMaster document)
          {
 	    	documentMasterService.saveDocument(document);
-        	 return "Document Saved Successfully";
+	    	List<DocumentMaster> doc=(List<DocumentMaster>) documentMasterService.getAllDocument();
+			 return doc;
          }
 
 		
@@ -59,13 +61,23 @@ public class DocumentMasterController {
 		
 		
 		@DeleteMapping(value = "/deleteDocument/{docid}")
-		public List<DocumentMaster> deleteDocument(@PathVariable("docid") DocumentMaster documentt)
+		public boolean deleteDocument(@PathVariable int docid) {
+			DocumentMaster document = documentMasterService.getDocument(docid);
+			if (document != null) {
+				documentMasterService.deleteDocument(document);
+				return true;
+			} 
+			return false;
+			
+		}
+
+/*		public List<DocumentMaster> deleteDocument(@PathVariable("docid") DocumentMaster documentt)
 		{
 		   documentMasterService.deleteDocument(documentt);
 		   List<DocumentMaster> document=documentMasterService.getAllDocument();
 		   return document;
 		}
-		
+*/		
 		/*@PutMapping(value = "/update")
 		public List<DocumentMaster> updateDocument(@RequestBody DocumentMaster document)
 		{

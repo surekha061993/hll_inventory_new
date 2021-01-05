@@ -14,6 +14,5 @@ public interface PackingMasterDao {
 	public PackingMaster getPacking(Integer packId);
 	public List<PackingMaster> getAllPacking();
 	public void updatePacking(PackingMaster packing);
-	public PackingMaster deletePacking(PackingMaster packing);
 	
 }

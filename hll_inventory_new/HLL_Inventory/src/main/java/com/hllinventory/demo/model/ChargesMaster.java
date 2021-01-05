@@ -13,43 +13,38 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
-@ToString
+/**
+ * @author Surekha Londhe
+ * @Date 20-12-2020
+ */
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name="inv_charges_master")
 @Entity
-@Table(name="inv_docment_master")
-public class DocumentMaster {
-	
+public class ChargesMaster {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int docid;
-	private String docname;
-	
-	@Column(name="doc_delete_flag")
-	private  int docDeleteFlag;
-	
+	private int inv_charges_Id;
+	private String inv_charges_name;
+	@Column(name="inv_status")
+	private String status;
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="doc_update_date")
-	private Date docUpdateDate;
-    
+	private Date inv_charges_create_date;
 	@Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "doc_add_date")
-	private Date documentAddDate;
-
+	private Date inv_charges_update_date;
+	
 	@PrePersist
     protected void onCreate() {
-		docUpdateDate = documentAddDate = new Date();
+		inv_charges_update_date = inv_charges_create_date = new Date();
     }
 	@PreUpdate
     protected void onUpdate() {
-		docUpdateDate = new Date();
+		inv_charges_update_date = new Date();
     }
 }

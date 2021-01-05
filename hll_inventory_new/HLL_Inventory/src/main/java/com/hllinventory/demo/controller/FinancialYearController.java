@@ -35,6 +35,7 @@ public class FinancialYearController {
 		//return "Financial Year Saved Successfully";
 	}
 
+	
 	@GetMapping(value = "/getAll")
 	public List<FinancialYearMaster> getAllFinancialYearData() {
 		List<FinancialYearMaster> financial = financialYearService.getAllFinancialYear();

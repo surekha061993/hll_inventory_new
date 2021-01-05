@@ -54,13 +54,5 @@ public class PackingMasterDaoImpl implements PackingMasterDao{
 		session.close();
 	}
 
-	@Override
-	public PackingMaster deletePacking(PackingMaster packing) {
-		Session session=this.sessionFactory.openSession();
-		session.delete(packing);
-		session.beginTransaction().commit();
-		session.close();
-		return packing;
-	}
-
+	
 }

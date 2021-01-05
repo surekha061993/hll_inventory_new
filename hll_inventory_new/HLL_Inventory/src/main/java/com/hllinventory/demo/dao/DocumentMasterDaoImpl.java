@@ -59,7 +59,7 @@ public class DocumentMasterDaoImpl implements DocumentMasterDao {
 	@Override
 	public List<DocumentMaster> getAllDocuments() {
 		Session session = this.sessionFactory.openSession();
-		Query query = session.createQuery("from DocumentMaster where docDeleteFlag = '0'");
+		Query query = session.createQuery("from DocumentMaster where docDeleteFlag = '0' and docname!=Null");
 		 List<DocumentMaster> document = (List<DocumentMaster>)query.list();
 	     session.beginTransaction().commit();
 	     session.close();

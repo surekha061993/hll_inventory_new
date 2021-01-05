@@ -56,7 +56,6 @@ public class DocumentMasterServiceImpl implements DocumentMasterService {
 	}
 */
 	
-
 	/*@Override
 	public DocumentMaster deleteDocument(DocumentMaster document) {
 	

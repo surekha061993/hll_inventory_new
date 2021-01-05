@@ -63,10 +63,9 @@ public class DocumentNumberingMaster implements Serializable {
 	@Column(name = "document_suffix")
 	private String docSuffix;
 
-//	@OneToOne(cascade=CascadeType.ALL)
-//	@JoinColumn(name = "year_id")
-	@OneToMany
-	private List<FinancialYearMaster> year_id;
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name = "year_id")
+	private FinancialYearMaster year;
 
 	@Column(name = "doc_delete_flag")
 	private int docDeleteFlag;

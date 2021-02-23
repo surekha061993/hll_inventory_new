@@ -25,19 +25,18 @@ public class DocumentNumberingMasterDaoImpl implements DocumentNumberingMasterDa
 	@Override
 	public void saveDocument(DocumentNumberingMaster document) {
 		Session session=this.sessionFactory.openSession();
-//        String hql = "from DocumentMaster where docid=:docid";
-//		Query query = sessionFactory.openSession().createQuery("select docid from DocumentMaster where docid = :docid");
-//		query.setParameter("docid",document.getDocument().getDocid());
-//		
-//		Integer i=document.getDocument().getDocid();
-//		System.out.println("id:"+i);
-//		Integer docid = (Integer) query.uniqueResult();
-//		System.out.println("docid: "+docid);
-//		DocumentMaster lab = new DocumentMaster();
-//		lab.setDocid(docid);	
-//		document.setDocument(lab);
-//		document.setDocNumId(document.getDocNumId());
-
+		
+		Query query = sessionFactory.openSession().createQuery("from DocumentMaster where doc_id=:doc_id");
+		query.setParameter("doc_id",document.getDocument().getDoc_id());
+		//Integer i=document.getDocument().getDoc_id();
+		//System.out.println("id:"+i);
+		Integer doc_id = (Integer) query.uniqueResult();
+		System.out.println("docid: "+doc_id);
+		DocumentMaster doc = new DocumentMaster();
+		doc.setDoc_id(doc_id);
+		document.setDocument(doc);
+		document.setDocNumId(document.getDocNumId());
+		
 		session.save(document);
 		session.beginTransaction().commit();
 		session.close();

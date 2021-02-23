@@ -13,13 +13,13 @@ import com.hllinventory.demo.model.DocumentMaster;
 public interface DocumentMasterService {
 
 	public void saveDocument(DocumentMaster document);
-	public DocumentMaster getDocument(int docid);
+	public DocumentMaster getDocument(int doc_id);
 	public List<DocumentMaster> getAllDocument();
     public DocumentMaster deleteDocument(DocumentMaster document);
 	public void updateDocument(DocumentMaster document);
     
 
-	// public Optional<DocumentMaster> getDocument(int docid);
+	// public Optional<DocumentMaster> getDocument(int doc_id);
 	//public List<DocumentMaster> searchDocumentByName(String docname);
 	//public List<DocumentMaster> updateDocument(DocumentMaster document);
     

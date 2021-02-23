@@ -16,5 +16,5 @@ public interface DocumentNumberingMasterService {
 	public List<DocumentNumberingMaster> getAllDocument();
     public DocumentNumberingMaster deleteDocument(DocumentNumberingMaster document);
 	public void updateDocument(DocumentNumberingMaster document);
-    
-}
+  }
+

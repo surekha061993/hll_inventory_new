@@ -47,9 +47,9 @@ public class DocumentMasterController {
 			return document;
 		}
 		
-		@GetMapping(value = "/getDocument/{docid}")
-		public DocumentMaster getDocument(@PathVariable int docid) {
-			return documentMasterService.getDocument(docid);
+		@GetMapping(value = "/getDocument/{doc_id}")
+		public DocumentMaster getDocument(@PathVariable int doc_id) {
+			return documentMasterService.getDocument(doc_id);
 		     
 		}
 		
@@ -60,9 +60,9 @@ public class DocumentMasterController {
 		}
 		
 		
-		@DeleteMapping(value = "/deleteDocument/{docid}")
-		public boolean deleteDocument(@PathVariable int docid) {
-			DocumentMaster document = documentMasterService.getDocument(docid);
+		@DeleteMapping(value = "/deleteDocument/{doc_id}")
+		public boolean deleteDocument(@PathVariable int doc_id) {
+			DocumentMaster document = documentMasterService.getDocument(doc_id);
 			if (document != null) {
 				documentMasterService.deleteDocument(document);
 				return true;
@@ -71,7 +71,7 @@ public class DocumentMasterController {
 			
 		}
 
-/*		public List<DocumentMaster> deleteDocument(@PathVariable("docid") DocumentMaster documentt)
+/*		public List<DocumentMaster> deleteDocument(@PathVariable("doc_id") DocumentMaster documentt)
 		{
 		   documentMasterService.deleteDocument(documentt);
 		   List<DocumentMaster> document=documentMasterService.getAllDocument();

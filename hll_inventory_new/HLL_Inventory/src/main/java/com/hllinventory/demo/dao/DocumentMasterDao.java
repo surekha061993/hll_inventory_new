@@ -17,7 +17,7 @@ public interface DocumentMasterDao {
 
 
     public void saveDocument(DocumentMaster document);
-	public DocumentMaster getDocuments(int docid);
+	public DocumentMaster getDocuments(int doc_id);
 	public void updateDocument(DocumentMaster document);	
 	public DocumentMaster deleteDocuments(DocumentMaster document);
 	public List<DocumentMaster> getAllDocuments();

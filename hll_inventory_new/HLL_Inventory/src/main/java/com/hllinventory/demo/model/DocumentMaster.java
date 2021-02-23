@@ -30,7 +30,7 @@ public class DocumentMaster {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int docid;
+	private Integer doc_id;
 	private String docname;
 	
 	@Column(name="doc_delete_flag")

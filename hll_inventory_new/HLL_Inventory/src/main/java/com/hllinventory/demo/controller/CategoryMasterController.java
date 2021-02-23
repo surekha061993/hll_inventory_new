@@ -63,7 +63,5 @@ public class CategoryMasterController {
 			return true;
 		}
 		return false;
-
 	}
-
 }

@@ -31,9 +31,9 @@ public class DocumentMasterDaoImpl implements DocumentMasterDao {
 	}
 
 	@Override
-	public DocumentMaster getDocuments(int docid) {
+	public DocumentMaster getDocuments(int doc_id) {
 		Session session = this.sessionFactory.openSession();
-		 DocumentMaster doc=session.find(DocumentMaster.class, docid);
+		 DocumentMaster doc=session.find(DocumentMaster.class, doc_id);
 	     session.beginTransaction().commit();
 	     session.close();
 		return doc;

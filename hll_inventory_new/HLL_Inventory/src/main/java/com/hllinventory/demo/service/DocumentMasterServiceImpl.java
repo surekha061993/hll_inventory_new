@@ -28,8 +28,8 @@ public class DocumentMasterServiceImpl implements DocumentMasterService {
 	}
 
 	@Override
-	public DocumentMaster getDocument(int docid) {
-		 return masterDao.getDocuments(docid);	}	
+	public DocumentMaster getDocument(int doc_id) {
+		 return masterDao.getDocuments(doc_id);	}	
 
 	@Override
 	public void updateDocument(DocumentMaster document) {
@@ -65,8 +65,8 @@ public class DocumentMasterServiceImpl implements DocumentMasterService {
 	}
     */
 	/*	@Override
-	public Optional<DocumentMaster> getDocument(int docid) {
-		return documentRepository.findById(docid);
+	public Optional<DocumentMaster> getDocument(int doc_id) {
+		return documentRepository.findById(doc_id);
 		//return document;
 	}
      */
